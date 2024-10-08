@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://tone.wav" type="AudioStream" id=4]
+[ext_resource path="res://sprites/Fchampalimaud-Logo-01.png" type="Texture" id=5]
+[ext_resource path="res://sprites/START.png" type="Texture" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 300, 100 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 959.036, 539.733 )
+scale = Vector2( 0.951069, 1105.08 )
+texture = SubResource( 2 )
+
+[node name="volume_test" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 77.6339
+margin_top = 871.268
+margin_right = 860.634
+margin_bottom = 987.268
+hint_tooltip = "ENTER YOUR PARTICIPANT ID"
+size_flags_stretch_ratio = 24.96
+custom_fonts/font = ExtResource( 3 )
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1717.43, 996.134 )
+scale = Vector2( 0.185546, 0.185546 )
+texture = ExtResource( 5 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 672.055, 382.665 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="TouchScreenButton"]
+position = Vector2( 296.341, 100.45 )
+scale = Vector2( 0.552029, 0.595475 )
+texture = ExtResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 78.9247
+margin_top = 848.13
+margin_right = 508.925
+margin_bottom = 893.13
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 1
+text = "ENTER PARTICIPANT ID:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
